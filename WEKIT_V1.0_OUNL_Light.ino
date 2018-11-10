@@ -2,8 +2,13 @@
  *  This sketch sends random data over UDP on a ESP32 device
  *
  */
+#include <MPU9250_asukiaaa.h>
+#include <Sensirion.h>
 #include <WiFi.h>
+#include <Wekit_ESP.h>
+#include <DHTesp.h>
 #include <WiFiUdp.h>
+#include <ArduinoJson.h>
 
 // WiFi network name and password:
 const char * networkName = "SPU_WiFi";
@@ -15,11 +20,47 @@ const char * networkPswd = "12345678";
 const char * udpAddress = "192.168.137.1";
 const int udpPort = 5005;
 
-//Are we currently connected?
+// Global Vars
 boolean connected = false;
+const size_t bufferSize = 2*JSON_ARRAY_SIZE(2) + 2*JSON_OBJECT_SIZE(2) + JSON_OBJECT_SIZE(6) + 2*JSON_OBJECT_SIZE(13);
+
+// IMUs
+#define MPUS 2
+MPU9250 mpu9250_0;
+MPU9250 mpu9250_1;
+
+// IMU Vars
+float aX0, aY0, aZ0, aSqrt0, gX0, gY0, gZ0, mDirection0, mX0, mY0, mZ0;
+float aX1, aY1, aZ1, aSqrt1, gX1, gY1, gZ1, mDirection1, mX1, mY1, mZ;
+
+// DHT22 Vars
+float dht22_Humidity0;
+float dht22_Temp0;
+float dht22_Humidity1;
+float dht22_Temp1;
+
+// GSR Vars
+int gsr;
+
+// Pulse Vars
+int pulse;
 
 //The udp library class
 WiFiUDP udp;
+DHTesp dht;
+
+// Pin Defines
+
+#define PULSE_PIN 39
+#define GSR_PIN 36
+#define SDA_IMU0_PIN 5
+#define SCL_IMU0_PIN 4
+#define SDA_IMU1_PIN 25
+#define SCL_IMU1_PIN 26
+#define DHT0_PIN 2
+
+//  defines 
+#define DHTTYPE DHT22
 
 void setup(){
   // Initilize hardware serial:
@@ -27,9 +68,21 @@ void setup(){
   
   //Connect to the WiFi network
   connectToWiFi(networkName, networkPswd);
+  pinMode(GSR_PIN, INPUT);
+  pinMode(PULSE_PIN, INPUT);
+
+  Wire.begin(SDA_IMU0_PIN, SCL_IMU0_PIN);
+  Wire1.begin(SDA_IMU1_PIN, SCL_IMU1_PIN);
+
 }
 
 void loop(){
+
+}
+
+
+//Sends the data to the UDP Server
+void SendData(){
   //only send data when connected
   if(connected){
     char msg[420];
@@ -40,8 +93,6 @@ void loop(){
     udp.print(msg);
     udp.endPacket();
   }
-  //Wait for 1 second
-  delay(1000);
 }
 
 void connectToWiFi(const char * ssid, const char * pwd){

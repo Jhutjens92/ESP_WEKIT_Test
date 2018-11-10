@@ -1,0 +1,11 @@
+{
+  "additionalFiles": "\\build\\preproc\\ctags_target_for_gcc_minus_e.cpp,\\build\\sketch\\WEKIT_V1.0_OUNL_Light.ino.cpp",
+  "builtInLibrariesFolders": "C:\\Program Files (x86)\\Arduino\\libraries",
+  "customBuildProperties": "build.path=c:\\Users\\Jordi Hutjens\\Documents\\GitHub\\ESP_WEKIT_Test\\build,build.warn_data_percentage=75,runtime.tools.esptool.path=C:\\Users\\Jordi Hutjens\\AppData\\Local\\Arduino15\\packages\\esp32\\tools\\esptool\\2.3.1,runtime.tools.esptool-2.3.1.path=C:\\Users\\Jordi Hutjens\\AppData\\Local\\Arduino15\\packages\\esp32\\tools\\esptool\\2.3.1,runtime.tools.mkspiffs.path=C:\\Users\\Jordi Hutjens\\AppData\\Local\\Arduino15\\packages\\esp32\\tools\\mkspiffs\\0.2.3,runtime.tools.mkspiffs-0.2.3.path=C:\\Users\\Jordi Hutjens\\AppData\\Local\\Arduino15\\packages\\esp32\\tools\\mkspiffs\\0.2.3,runtime.tools.xtensa-esp32-elf-gcc.path=C:\\Users\\Jordi Hutjens\\AppData\\Local\\Arduino15\\packages\\esp32\\tools\\xtensa-esp32-elf-gcc\\1.22.0-80-g6c4433a-5.2.0,runtime.tools.xtensa-esp32-elf-gcc-1.22.0-80-g6c4433a-5.2.0.path=C:\\Users\\Jordi Hutjens\\AppData\\Local\\Arduino15\\packages\\esp32\\tools\\xtensa-esp32-elf-gcc\\1.22.0-80-g6c4433a-5.2.0",
+  "fqbn": "esp32:esp32:esp32:PSRAM=disabled,PartitionScheme=default,FlashMode=qio,FlashFreq=80,FlashSize=4M,UploadSpeed=921600,DebugLevel=none",
+  "hardwareFolders": "C:\\Program Files (x86)\\Arduino\\hardware,C:\\Users\\Jordi Hutjens\\AppData\\Local\\Arduino15\\packages",
+  "otherLibrariesFolders": "C:\\Users\\Jordi Hutjens\\Documents\\Arduino\\libraries",
+  "runtime.ide.version": "10807",
+  "sketchLocation": "c:\\Users\\Jordi Hutjens\\Documents\\GitHub\\ESP_WEKIT_Test\\WEKIT_V1.0_OUNL_Light.ino",
+  "toolsFolders": "C:\\Program Files (x86)\\Arduino\\tools-builder,C:\\Program Files (x86)\\Arduino\\hardware\\tools\\avr,C:\\Users\\Jordi Hutjens\\AppData\\Local\\Arduino15\\packages"
+}
